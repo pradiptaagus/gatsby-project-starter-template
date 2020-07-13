@@ -1,0 +1,98 @@
+.left-sidebar {
+    width: 240px;
+    padding-top: 56px;
+    height: 100%;
+    top: 0;
+    z-index: 10;
+    box-shadow: 1px 0 20px rgba(0,0,0,.08);
+    transition: .2s ease-in;
+    background-color: #ffffff;
+    position: fixed;
+    touch-action: auto;
+    overflow: hidden;
+}
+
+
+.sidebar-nav {
+    padding: 16px;
+    height: 100%;
+    overflow-y: scroll;
+
+    .nav-parent {
+        margin: 0 0 0 10px;
+        padding: 0;
+
+        &.expanded {
+            display: block;
+        }
+
+        .nav-item {
+            margin-top: 10px;
+        }
+    }
+
+    .nav-item-cap {
+        font-size: 12px;
+        line-height: 30px;
+        font-weight: 500;
+        padding: 14px 14px 14px 20px;
+        list-style: none;
+        color: #99abb4;
+
+        .icon {
+            display: none;
+        }
+    }
+
+    .nav-item {
+        list-style: none;
+        margin-bottom: 10px;
+        transition: .2s ease-in;
+        border-radius: 4px;
+
+        .nav-link {
+            padding: 8px 35px 8px 8px;
+            color: #607d8b;
+            border-radius: 4px;
+            white-space: nowrap;
+            line-height: 25px;
+            font-size: 15px;
+            position: relative;
+
+            &:hover {
+                color: #343a40;
+            }
+
+            &.active {
+                background-color: #26c6da;
+                color: #ffffff;
+                box-shadow: 0 0 10px rgba(0,0,0,.2);
+            }
+
+            .icon {
+                margin-right: 6px;
+            }
+        }
+
+        .has-arrow::after {
+            position: absolute;
+            content: '';
+            width: .55em;
+            height: .55em;
+            margin-left: 10px;
+            top: 20px;
+            right: 15px;
+            border-width: 1px 0 0 1px;
+            border-style: solid;
+            transition: all .3s ease-out;
+            transform-origin: top;
+            transform: rotate(-45deg) translate(0, -50%);
+            -webkit-transform-origin: top;
+            -webkit-transform: rotate(-45deg) translate(0, -50%);
+        }
+
+        .has-arrow.expanded:after {
+            transform: rotate(-135deg) translate(0,-50%);
+        }
+    }
+}

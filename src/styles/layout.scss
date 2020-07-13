@@ -1,0 +1,28 @@
+#___gatsby {
+    height: 100%;
+}
+
+body {
+    background-color: #eef5f9;
+    overflow-x: hidden;
+}
+
+.main-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.page-wrapper {
+    padding-top: 56px;
+    margin-left: 240px;
+    background-color: #eef5f9;
+    transition: .2s ease-in;
+
+    .container-fluid {
+        min-height: calc(100vh - 218px);
+    }
+}
+
+.container-fluid {
+    padding: 20px 30px;
+}
