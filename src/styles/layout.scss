@@ -12,17 +12,34 @@ body {
     overflow: hidden;
 }
 
+.container-fluid {
+    padding: 20px 20px;
+}
+
 .page-wrapper {
     padding-top: 56px;
-    margin-left: 240px;
     background-color: #eef5f9;
     transition: .2s ease-in;
 
     .container-fluid {
-        min-height: calc(100vh - 218px);
+        min-height: calc(100vh - 203px);
     }
 }
 
-.container-fluid {
-    padding: 20px 30px;
+@media(min-width: 768px) {
+    .page-wrapper {
+        margin-left: 240px;
+    }
+
+    .main-wrapper[data-sidebartype=mini-sidebar] {
+        .page-wrapper {
+            margin-left: 65px;
+        }
+    }
+}
+
+@media(max-width: 767px) {
+    .container-fluid {
+        padding: 10px 10px;
+    }
 }
