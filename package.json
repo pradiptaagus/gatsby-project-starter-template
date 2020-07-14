@@ -5,15 +5,23 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@types/react-helmet": "^6.0.0",
     "bootstrap": "^4.5.0",
     "gatsby": "^2.23.12",
     "gatsby-image": "^2.4.9",
     "gatsby-plugin-manifest": "^2.4.14",
     "gatsby-plugin-offline": "^3.2.13",
     "gatsby-plugin-react-helmet": "^3.3.6",
+    "gatsby-plugin-sass": "^2.3.12",
     "gatsby-plugin-sharp": "^2.6.14",
+    "gatsby-plugin-tslint": "^0.0.2",
+    "gatsby-plugin-typescript": "^2.4.14",
     "gatsby-source-filesystem": "^2.3.14",
     "gatsby-transformer-sharp": "^2.5.7",
+    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-bootstrap": "^1.2.1",
@@ -21,7 +29,15 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "prettier": "2.0.5",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-plugin-prettier": "^2.3.0",
+    "tslint-react": "^5.0.0",
+    "typescript": "^3.9.6"
   },
   "keywords": [
     "gatsby"
@@ -34,7 +50,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project"
   },
   "repository": {
     "type": "git",
