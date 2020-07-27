@@ -96,7 +96,7 @@ const User: React.FC<{}> = ({}) => {
                     <Card.Body>
                         <h3 className="mb-3">List of user</h3>
                         <Link to="/user/new" className="btn btn-primary mb-3">Add user</Link>
-                        <Table>
+                        <Table responsive>
                             <thead>
                                 <tr>
                                     <th>No</th>
