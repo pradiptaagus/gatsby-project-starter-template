@@ -1,5 +1,5 @@
 export interface Queryinterface {
-    size?: string;
-    page?: string;
-    search: string;
+    size?: number;
+    page?: number;
+    search?: string;
 }
