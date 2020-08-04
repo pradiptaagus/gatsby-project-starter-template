@@ -14,7 +14,7 @@ const Header: React.FC<{
     return (
         <Navbar bg="white" expand="md" fixed="top">
             <div
-                className={`navbar-header ${
+                className={`navbar-header dark-navbar-header ${
                     isNavbarHeaderExpanded ? "expanded" : null
                 }`}
                 onMouseOver={() => onNavbarHeaderHover()}

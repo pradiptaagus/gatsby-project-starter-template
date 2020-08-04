@@ -125,6 +125,20 @@
     }
 }
 
+.dark-sidebar {
+    background-color: #263145;
+
+    .nav-item {
+        .nav-link {
+            color: #777f92;
+
+            &:hover {
+                color: #ffffff;
+            }
+        }
+    }
+}
+
 @media(max-width: 767px) {
     .main-wrapper[data-sidebartype=mini-sidebar] {
         .left-sidebar {

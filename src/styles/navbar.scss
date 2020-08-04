@@ -18,6 +18,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    height: 56px;
+    display: flex;
+}
+
+.dark-navbar-header {
+    background-color: #263145;
+
+    .logo-text {
+        color: #ffffff;
+    }
 }
 
 .navbar-brand {

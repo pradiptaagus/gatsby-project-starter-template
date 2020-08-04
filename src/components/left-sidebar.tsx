@@ -56,7 +56,7 @@ const LeftSidebar: React.FC<{
             onMouseOver={() => onSidebarHover()}
             onMouseOut={() => onSidebarHover()}
         >
-            <nav className="sidebar-nav">
+            <nav className="sidebar-nav dark-sidebar">
                 <ul className="nav-parent">
                     <li className="nav-item-cap">
                         <FontAwesomeIcon icon={faEllipsisH} className="icon" />
