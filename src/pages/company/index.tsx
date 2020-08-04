@@ -7,8 +7,8 @@ import PageTitle from "../../components/page-title";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
-import { UserService } from "../../services/UserService";
-import { userReducer, SET_CURRENT_PAGE, SET_USER_DATA, SET_ITEM_PER_PAGE, SET_TOTAL_ITEM_COUNT } from "../../reducers/user-reducer";
+import { CompanyService } from "../../services/CompanyService";
+import { companyReducer, SET_CURRENT_PAGE, SET_DATA, SET_ITEM_PER_PAGE, SET_TOTAL_ITEM_COUNT } from "../../reducers/company-reducer";
 import { Queryinterface } from "../../interfaces/QueryInterface";
 import Button from "react-bootstrap/Button";
 import Pagination from "react-js-pagination";
@@ -16,20 +16,37 @@ import DeleteModal from "../../components/delete-modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-const User: React.FC<{}> = ({}) => {
-    const userService = new UserService();
+const Company: React.FC<{}> = ({}) => {
+    const companyService = new CompanyService();
     const [isShowModal, setIsShowModal] = useState(false);
     const [modalText, setModalText] = useState<string>("");
     const [paramater, setParameter] = useState<string>("");
     const [fetch, setFetch] = useState<boolean>(false);
-    const [state, dispatch] = useReducer(userReducer, {
+    const [state, dispatch] = useReducer(companyReducer, {
         id: "",
-        username: "",
+        name: "",
+        businessName: "",
+        taxNumber: "",
+        serialNumber: "",
+        activationCode: "",
+        address: "",
+        inventoryValuationMethod: 0,
+        inventoryMethod: 0,
+        contactPerson: "",
+        startSystem: "",
+        address2: "",
+        govermentVat: 0,
         email: "",
+        website: "",
+        phone: "",
+        businessType: 0,
+        packageSystemId: "",
+        status: "",
+        timeZone: "",
         data: [],
-        currentPage: 1,
-        itemPerPage: 10,
-        totalItemCount: 0
+        currentPage: 0,
+        itemPerPage: 0,
+        totalItemCount: 0,
     });
 
     function handlePageChange(pageNumber: number) {
@@ -45,7 +62,7 @@ const User: React.FC<{}> = ({}) => {
     }
 
     function fetchDelete(id: string) {
-        userService.delete(id).then((response: any) => {
+        companyService.delete(id).then((response: any) => {
             console.log(response);
             fetchUser({size: 5, page: state.currentPage});
             setIsShowModal(false);
@@ -56,9 +73,9 @@ const User: React.FC<{}> = ({}) => {
 
     function fetchUser(data: Queryinterface) {
         setFetch(true);
-        userService.index(data).then((response: any) => {
+        companyService.index(data).then((response: any) => {
             console.log(response);
-            dispatch({type: SET_USER_DATA, payload: response.data.data});
+            dispatch({type: SET_DATA, payload: response.data.data});
             dispatch({type: SET_CURRENT_PAGE, payload: parseInt(response.data.current_page)});
             dispatch({type: SET_ITEM_PER_PAGE, payload: parseInt(response.data.per_page)});
             dispatch({type: SET_TOTAL_ITEM_COUNT, payload: parseInt(response.data.total)});
@@ -75,12 +92,12 @@ const User: React.FC<{}> = ({}) => {
     
     return (
         <Layout>
-            <SEO title="User" />
+            <SEO title="Company" />
             <PageTitle
-                title="User"
+                title="Company"
                 breadcrumbs={[
                     { name: "Home", link: "/" },
-                    { name: "User", link: "/" },
+                    { name: "Company", link: "/" },
                 ]}
             />
             <Container fluid>
@@ -100,7 +117,7 @@ const User: React.FC<{}> = ({}) => {
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Username</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>Action</th>
                                 </tr>
@@ -114,7 +131,7 @@ const User: React.FC<{}> = ({}) => {
                                     state.data.map((item, index) => (
                                         <tr key={index}>
                                             <td>{index + 1}</td>
-                                            <td>{item.username}</td>
+                                            <td>{item.name}</td>
                                             <td>{item.email}</td>
                                             <td>
                                                 <Link to={`/user/edit?id=${item.id}`} className="btn btn-info mr-2">Edit</Link>
@@ -142,4 +159,4 @@ const User: React.FC<{}> = ({}) => {
     )
 }
 
-export default User;
+export default Company;

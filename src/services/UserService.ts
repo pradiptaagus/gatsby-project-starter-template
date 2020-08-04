@@ -1,11 +1,12 @@
 import axios from "./config";
 import { Queryinterface } from "../interfaces/QueryInterface";
 import { UserInterface } from "../interfaces/UserInterface";
+import { ServiceInterface } from "../interfaces/ServiceInterface";
 
 const apiUrl: string = "/user";
 
-export class UserService {
-    users(data: Queryinterface) {
+export class UserService implements ServiceInterface {
+    index(data: Queryinterface) {
         let url: string[] = [];
     
         if (data.page) {
@@ -17,55 +18,55 @@ export class UserService {
         }
         
         return new Promise((resolve, reject) => {
-            axios.get(`${apiUrl}?` + url.join('&')).then(response => {
+            axios.get(`${apiUrl}?` + url.join('&')).then((response: any) => {
                 resolve(response.data);
-            }).catch(errors => {
+            }).catch((errors: any) => {
                 reject(errors.response.data);
             });
         });
     }
     
-    showUser(id: string) {
+    show(id: string) {
         return new Promise((resolve, reject) => {
-            axios.get(`/user/${id}`).then(response => {
+            axios.get(`${apiUrl}/${id}`).then((response: any) => {
                 resolve(response.data);
-            }).catch(errors => {
+            }).catch((errors: any) => {
                 reject(errors.response.data);
             });
         });
     }
 
-    storeUser(data: UserInterface) {
+    store(data: UserInterface) {
         return new Promise((resolve, reject) => {
-            axios.post('/user', {
+            axios.post(apiUrl, {
                 username: data.username,
                 email: data.email
-            }).then(response => {
+            }).then((response: any) => {
                 resolve(response.data)
-            }).catch(errors => {
+            }).catch((errors: any) => {
                 reject(errors.response.data);
             });
         });
     }
 
-    updateUser(data: UserInterface, id: string) {
+    update(data: UserInterface, id: string) {
         return new Promise((resolve, reject) => {
-            axios.put(`/user/${id}`, {
+            axios.put(`${apiUrl}/${id}`, {
                 username: data.username,
                 email: data.email
-            }).then(response => {
+            }).then((response: any) => {
                 resolve(response.data);
-            }).catch(errors => {
+            }).catch((errors: any) => {
                 reject(errors.response.data);
             });
         });
     }
 
-    deleteUser(id: string) {
+    delete(id: string) {
         return new Promise((resolve, reject) => {
-            axios.delete(`/user/${id}`).then(response => {
+            axios.delete(`${apiUrl}/${id}`).then((response: any) => {
                 resolve(response.data);
-            }).catch(errors => {
+            }).catch((errors: any) => {
                 reject(errors.response.data);
             });
         });
